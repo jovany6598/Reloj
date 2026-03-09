@@ -1,60 +1,38 @@
-# Biblioteca en Solana
+# ⌚ CRUD de Relojes en Solana con Anchor
 
-![banner](./images/banner-biblioteca.jpg)
+Este proyecto implementa un **CRUD (Create, Read, Update, Delete)** de relojes utilizando **Rust, Anchor Framework y la blockchain de Solana**.
 
-CRUD básico de un Solana Program desarrollado con Rust y Anchor desde el Solana Playground. 
+El programa permite a un usuario crear una colección de relojes y administrar los relojes almacenados en ella.
 
-Puedes comenzar dándole Fork a este repositorio (abajo te explicamos como 👇), **hemos preparado un entorno de codespaces listo para que no tengas que instalar nada**, solo déjate llevar por la fluidez de los ejercicios y temas desarrollados especialmente para ti. 
+---
 
-Asegúrate de clonar este repositorio a tu cuenta usando el botón **`Fork`**.
+# 📚 Descripción del Proyecto
 
-![fork](./images/fork.png)
+El contrato inteligente crea una **cuenta PDA (Program Derived Address)** donde se almacenan los datos de una colección de relojes.
 
-## Importando el proyecto 
+Cada colección contiene:
 
-Ya con el repositorio en tu cuenta lo siguiente que debes hacer copiar el `enlace de tu repositorio`, lo que se puede hacer directamente desdel navegador:
+* Propietario (`owner`)
+* Nombre de la colección
+* Lista de relojes
 
-![repo](./images/repo.png)
-Posteriormente, lo uniremos con el siguiente enlace en nuestro navegador de preferencia:
+Cada reloj contiene:
 
-```url
-https://beta.solpg.io/
-```
+* Marca
+* Modelo
+* Precio
+* Disponibilidad
 
-Lo que nos dará algo parecido a:
+Todas las operaciones solo pueden ser realizadas por el **propietario de la colección**.
 
-![url](./images/url.png)
+---
 
-Al pulsar enter seremos enviados al `Solana Playground` con nuestro proyecto abierto:
+# 🧱 Estructura del Programa
 
-![pg](./images/pg.png)
+El programa está dividido en varias partes principales:
 
-Para guardarlo solo damos clic en el boton `import` y asignamos un nombre:
+## 1️⃣ Programa Principal
 
-![import](./images/import.png)
-
-## Preparacion del entorno
-
-Primero conectaremos el entorno con la devnet, lo que tambien procederá a la creación de una wallet. Para eso daremos clic en donde dice **Not Conected**:
-
-![playground1](./images/playground1.png)
-
-Saldrá la siguiente ventana donde daremos en el botón **Continue**:
-
-![wallet](./images/wallet.png)
-
-Como resultado se mostrará la siguiente información:
-
-![status](./images/status.png)
-
-* En verde: el estado de la conexión y el entorno al que se encuentra conectado
-
-* En amarillo: la la dirección de la wallet conectada
-
-* En azul: la cantidad de tokens en la wallet
-
-> ℹ️ ¿Quieres ver el ejemplo de un "Hola Mundo" en Solana?. Da clic aquí: 👉 [Ver Ejemplo](https://github.com/WayLearnLatam/Solana-starter-kit/tree/1fc6349ba63375a3fe223d8d56911bc64765459b/build-deploy)
-
-> ℹ️ ¿Cuentas con una Wallet de [Phantom](https://phantom.com/) que deseas importar?, Da clic aquí para ver como hacerlo: 
-
-👉 [Como Importar una Wallet](https://github.com/WayLearnLatam/Solana-starter-kit/tree/1fc6349ba63375a3fe223d8d56911bc64765459b/import-key-a-playground)
+```rust
+#[program]
+pub mod relojeria
